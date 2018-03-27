@@ -1,0 +1,28 @@
+<h2>Add a Book to Your Library</h2>
+
+<form action="/books" method-"POST">
+	<h3>Choose an existing book to add to your library:</h3>
+	<% @books.each do |book| %>
+	<input type="radio" name="book_object">
+	<label><%=book.title%> by <%=book.author.name%>  </label>
+	<% end %>
+
+    <h3>Or, create a new book to add to your library: </h3>
+
+	<label for="title">Book Title: </label>
+	<input id="title" type="text" name="book[title]">
+	<br></br>
+    <label>Choose an existing author:</label>
+    <br>
+    <% @authors.each do |author| %>
+    <input type="radio" name="book[author_id]" value="<%=author.id%>" id="<%=author.id%>">
+    <label><%=author.name%>    </label>
+    <% end %>
+    <br></br>
+    <h3>Or, add a new author:</h3>
+    <br>
+    <label for="author_name">Author Name: </label>
+    <input id="author_name" type="text" name="author[name]">
+    <br></br>
+    <input type="submit" name="Add Book">
+</form>
