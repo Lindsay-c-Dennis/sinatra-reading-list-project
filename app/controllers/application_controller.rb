@@ -41,9 +41,23 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/books/:id' do 
-    @book = Book.find_by_id(params[:id]) 
-  	erb :'/books/show'
+    if logged_in?
+      @book = Book.find_by_id(params[:id]) 
+  	  erb :'/books/show'
+  	else 
+  	  redirect to '/login'
+  	end    
   end 
+
+  get '/books/:id/edit' do 
+  	if logged_in?
+  		@book = Book.find_by_id(params[:id])
+  		erb :'/books/edit'
+  	else
+  	    redirect to '/login'
+  	end
+  end 	    	
+
 
   get '/users/:id' do 
   	@user = User.find_by_id(id: params[:id])
@@ -54,7 +68,7 @@ class ApplicationController < Sinatra::Base
   	end    
   end 
 
-  get 'authors/:id' do 
+  get '/authors/:id' do 
   	@author = Author.find_by_id(params[:id])
   	if logged_in?
   		erb :'/authors/show'
@@ -91,13 +105,19 @@ class ApplicationController < Sinatra::Base
         @book.author = Author.create(name: params["author"]["name"])
       end 
       @book.save
-      #binding.pry
       current_user.books << @book
       redirect to "/users/:id"   
   	else
   	  redirect to '/login'
   	end     
   end 
+
+  patch '/books/:id' do 
+  	@book = Book.find_by_id(params[:id])
+  	@book.update(params[:book])
+  	redirect to '/users/:id'
+  end	
+
   
   helpers do
 
