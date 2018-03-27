@@ -1,0 +1,6 @@
+Author.create(name: "Margaret Atwood")
+Author.create(name: "Kurt Vonnegut")
+Author.create(name: "Toni Morrison")
+Book.create(title: "Oryx and Crake", author_id: 1)
+Book.create(title: "Cat's Cradle", author_id: 2)
+Book.create(title: "The Bluest Eye", author_id: 3)
