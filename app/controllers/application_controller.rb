@@ -40,6 +40,11 @@ class ApplicationController < Sinatra::Base
   	erb :'/books/new'
   end
 
+  get '/books/:id' do 
+    @book = Book.find_by_id(id: params[:id]) 
+  	erb :'/books/show'
+  end 
+
   get '/users/:id' do 
   	@user = User.find_by_id(id: params[:id])
   	if logged_in? 
