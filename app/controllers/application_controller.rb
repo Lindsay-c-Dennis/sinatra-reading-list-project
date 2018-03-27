@@ -100,9 +100,11 @@ class ApplicationController < Sinatra::Base
 
   post '/books' do 
   	if logged_in?
-      @book = Book.create(params[:book])
+      @book = Book.find_or_create_by(title: params["book"]["title"])
       if !params["author"]["name"].empty?
-        @book.author = Author.create(name: params["author"]["name"])
+        @book.author = Author.find_or_create_by(name: params["author"]["name"])
+      else 
+        @book.author_id = params["book"]["author_id"]  
       end 
       @book.save
       current_user.books << @book
@@ -117,6 +119,13 @@ class ApplicationController < Sinatra::Base
   	@book.update(params[:book])
   	redirect to '/users/:id'
   end	
+
+  delete '/books/:id/delete' do 
+    @book = Book.find_by_id(params[:id]) 
+    binding.pry
+    #current_user.books.delete_if{|b| b.id == @book.id}
+    #@book.users.delete_if{|u| u.id == current_user.id}
+  end
 
   
   helpers do
