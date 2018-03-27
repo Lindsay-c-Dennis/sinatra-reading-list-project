@@ -2,7 +2,7 @@
 <h3>Here is your reading list:</h3>
 <ol>
 	<% current_user.books.each do |book| %>
-	  <li><%=book.title%> by <%=book.author%> <a href="#"><button>Edit</button></a> <a href="#"><button>Delete</button></a></li>
+	  <li><%=book.title%> by <%=book.author.name%> <a href="#"><button>Edit</button></a> <a href="#"><button>Delete</button></a></li>
 	<% end %>
 </ol>
 
