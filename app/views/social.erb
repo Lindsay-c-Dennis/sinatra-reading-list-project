@@ -1,3 +1,12 @@
 Here's what folks are reading!
 <br></br>
-<a href="/books/new">Click here to add to your reading list</a>
+<% User.all.each do |user| %>
+  <h4><%=user.username%>'s Reading List:</h4>
+  <ol>
+  <% user.books.each do |book| %>
+    <li><%=book.title%> by <%=book.author%></li> 
+  <% end %>  
+  </ol>
+<% end %>
+<br></br>
+<a href="/users/:id">Return to Your Homepage</a> 

@@ -41,8 +41,8 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/users/:id' do 
-  	@user = User.find_by_id(params[:id])
-  	if logged_in?
+  	@user = User.find(session[:user_id])
+  	if logged_in? 
   	  erb :'/users/show'
   	else 
   	  redirect to '/login'
