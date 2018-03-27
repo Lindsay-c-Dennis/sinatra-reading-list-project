@@ -1,4 +1,4 @@
-<h1><%=@book.title%> by <%=@book.author%> </h1>
+<h1><%=@book.title%> by <a href="/authors/<%=@book.author_id%>"><%=@book.author.name%></a> </h1>
 
 <h3>This book is being read by: </h3>
 <ul>
@@ -6,3 +6,9 @@
 	<li><%=user.username%></li>
 	<% end %>
 </ul>	
+
+<a href="/users/:id">Click Here to Return to Your Homepage</a>
+<br>
+<a href="/reading_list">Click Here to See What Others Are Reading</a>
+<br>
+<a href="/logout"><button>Log Out</button></a>
