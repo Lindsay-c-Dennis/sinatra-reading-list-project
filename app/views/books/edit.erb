@@ -1,0 +1,22 @@
+<h1>Edit Book</h1>
+<br></br>
+<form action="/books/<%=@book.id%>" method="POST">
+  <input type="hidden" name="_method" value="PATCH">
+  <label for="title">Book Title:</label>
+  <input id="title" type="text" name="book[title]" value="<%=@book.title%>"><br>
+  <label>Choose an existing author:</label>
+
+  <br></br>
+
+  <%Author.all.each do |author|%>
+    <input type="radio" name="book[author_id]" value="<%=author.id%>" id="<%=author.id%>" <%='checked' if @author.name == author.name %>>
+    <label><%=author.name%></label>
+  <%end%>
+  <br></br>
+  Or, enter a new author name: 
+  <label for="author_name">Author Name: </label>
+  <input id="author_name" type="text" name="author[name]">
+  <br></br>
+  <input type="submit" name="Update Book">
+
+</form>
