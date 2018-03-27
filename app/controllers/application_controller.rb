@@ -42,6 +42,7 @@ class ApplicationController < Sinatra::Base
 
   get '/books/:id' do 
     @book = Book.find_by_id(id: params[:id]) 
+    binding.pry
   	erb :'/books/show'
   end 
 
