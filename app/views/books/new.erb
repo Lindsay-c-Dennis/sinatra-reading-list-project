@@ -6,7 +6,7 @@
 	<br></br>
     <label>Choose an existing author:</label>
     <br>
-    <% @authors.each do |author| %>
+    <% @authors.uniq.each do |author| %>
     <input type="radio" name="book[author_id]" value="<%=author.id%>" id="<%=author.id%>">
     <label><%=author.name%>    </label>
     <% end %>

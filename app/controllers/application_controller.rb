@@ -122,9 +122,8 @@ class ApplicationController < Sinatra::Base
 
   delete '/books/:id/delete' do 
     @book = Book.find_by_id(params[:id]) 
-    binding.pry
-    #current_user.books.delete_if{|b| b.id == @book.id}
-    #@book.users.delete_if{|u| u.id == current_user.id}
+    current_user.books.delete_if{|b| b.id == @book.id}
+    redirect to '/users/:id'
   end
 
   
