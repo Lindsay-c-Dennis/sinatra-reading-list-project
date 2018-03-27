@@ -2,12 +2,15 @@
 <h3>Here is your reading list:</h3>
 <ol>
 	<% current_user.books.each do |book| %>
-	  <li><%=book.title%> by <%=book.author%></li>
+	  <li><%=book.title%> by <%=book.author%> <a href="#"><button>Edit</button></a> <a href="#"><button>Delete</button></a></li>
 	<% end %>
 </ol>
 
-<a href="/books/new">Click here to add to your reading list</a>
-<br></br>
+
+	<a href="/books/new">Click here to add to your reading list</a>
+	<br></br>
+
+
 
 <a href="/reading_list">Click here to see what others are reading!</a>	
 <br></br>

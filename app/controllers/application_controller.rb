@@ -41,7 +41,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/users/:id' do 
-  	@user = User.find(session[:user_id])
+  	@user = User.find_by_id(id: params[:id])
   	if logged_in? 
   	  erb :'/users/show'
   	else 
