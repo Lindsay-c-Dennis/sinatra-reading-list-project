@@ -80,7 +80,8 @@ class BooksController < ApplicationController
     	@book.update(params[:book])
     	redirect to '/users/:id'
     else 
-      redirect to '/'  
+      redirect to '/'
+    end    
   end	
 
   delete '/books/:id/delete' do 
@@ -89,7 +90,8 @@ class BooksController < ApplicationController
       current_user.books.delete(@book)
       redirect to '/users/:id'
     else 
-      redirect to '/'  
+      redirect to '/'
+    end    
   end
 	    	
 end
