@@ -48,6 +48,7 @@ class ReadingGoalsController < ApplicationController
        redirect to '/users/:id'
       else
         redirect to '/reading_goals/new' 
+      end  
   end 		
 
 
