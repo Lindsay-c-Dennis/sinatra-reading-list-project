@@ -27,7 +27,11 @@ class ApplicationController < Sinatra::Base
    end 
 
   get '/signup' do 
-  	erb :'/users/signup'
+  	if logged_in? 
+  		redirect to '/users/:id'
+  	else	
+  	    erb :'/users/signup'
+  	end    
   end
 
   get '/reading_list' do 
@@ -36,7 +40,15 @@ class ApplicationController < Sinatra::Base
     else 
       redirect to '/login'
     end    
-  end 	
+  end 
+
+  get '/books/add' do 
+    if logged_in?
+      erb :'/books/add_from_library'
+    else 
+      redirect to '/login'	
+    end  
+  end   	
 
   get '/books/new' do 
   	if logged_in?
@@ -44,7 +56,8 @@ class ApplicationController < Sinatra::Base
   	  @books = Book.all
   	  erb :'/books/new'
   	else 
-  	  redirect to '/login'  
+  	  redirect to '/login' 
+  	end   
   end
 
   get '/books/:id' do 
@@ -81,9 +94,8 @@ class ApplicationController < Sinatra::Base
   	else 
   	    redirect to '/login'
   	end 
-  end	     	
-
-
+  end	  
+	
   post '/login' do 
   	@user = User.find_by(username: params[:username])
   	if @user && @user.authenticate(params[:password])
