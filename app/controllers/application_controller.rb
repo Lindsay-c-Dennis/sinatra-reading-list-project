@@ -131,6 +131,16 @@ class ApplicationController < Sinatra::Base
   	  redirect to '/login'
   	end     
   end 
+  
+  post '/books/add' do 
+    if logged_in?
+      @book = Book.find_by_id(params["book"]["id"])
+      current_user.books << @book 
+      redirect to '/users/:id'
+    else 
+      redirect to '/login'
+    end 
+  end       
 
   patch '/books/:id' do 
   	@book = Book.find_by_id(params[:id])
