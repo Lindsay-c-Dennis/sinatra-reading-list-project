@@ -31,13 +31,20 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/reading_list' do 
-    erb :social
+    if logged_in?
+      erb :social
+    else 
+      redirect to '/login'
+    end    
   end 	
 
   get '/books/new' do 
-  	@authors = Author.all
-  	@books = Book.all
-  	erb :'/books/new'
+  	if logged_in?
+      @authors = Author.all
+  	  @books = Book.all
+  	  erb :'/books/new'
+  	else 
+  	  redirect to '/login'  
   end
 
   get '/books/:id' do 
@@ -60,7 +67,6 @@ class ApplicationController < Sinatra::Base
 
 
   get '/users/:id' do 
-  	@user = User.find_by_id(id: params[:id])
   	if logged_in? 
   	  erb :'/users/show'
   	else 

@@ -4,7 +4,7 @@ Here's what folks are reading!
   <h4><%=user.username%>'s Reading List:</h4>
   <ol>
   <% user.books.each do |book| %>
-    <li><%=book.title%> by <%=book.author.name%></li> 
+    <li><a href="/books/<%=book.id%>"><%=book.title%> by <%=book.author.name%></a></li> 
   <% end %>  
   </ol>
 <% end %>
