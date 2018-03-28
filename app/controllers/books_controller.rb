@@ -51,7 +51,11 @@ class BooksController < ApplicationController
   end 
   
   post '/books' do 
-  	if logged_in?
+  	if params["book"]["title"] == ""
+      redirect to '/books/new'
+    elsif !params["book"]["author_id"] && params["author"]["name"].empty?
+      redirect to '/books/new'
+    elsif logged_in? 
       @book = Book.create(params[:book])
       if !params["author"]["name"].empty?
         @book.author = Author.find_or_create_by(name: params["author"]["name"])
