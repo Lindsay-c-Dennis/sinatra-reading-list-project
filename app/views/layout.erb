@@ -1,12 +1,21 @@
 <!doctype html>
 <html>
   <head>
-    <title>Fwitter</title>
+    <title>The Reading List</title>
   </head>
   <body>
+  	<header><h1>Welcome to the Reading List!</h1></header>
+  	<% if logged_in? %>
+	  	<div class="topnav">
+	  		<a class="active" href="/users/:id">Home</a>
+	  		<a href="/reading_list">Social Reading List</a>
+	  		<a href="/books">Book Index</a>
+	  		<a href="/authors">Author Index</a>
+	  		<a href="/logout">Log Out</a>
+		</div>
+	<% end %>	
 
-    <div class="container">
-      <h1>Welcome to the Reading List!</h1>
+      
       <%= yield %>
     </div>
 

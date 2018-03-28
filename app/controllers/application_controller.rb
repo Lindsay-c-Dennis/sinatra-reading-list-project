@@ -21,16 +21,24 @@ class ApplicationController < Sinatra::Base
     if logged_in?
       erb :social
     else 
-      redirect to '/login'
+      redirect to '/'
     end    
   end  
+
+  get '/authors' do 
+    if logged_in?
+    	erb :'/authors/index'
+    else 
+        redirect to '/'
+    end    	
+  end 
 
   get '/authors/:id' do 
   	@author = Author.find_by_id(params[:id])
   	if logged_in?
   		erb :'/authors/show'
   	else 
-  	    redirect to '/login'
+  	    redirect to '/'
   	end 
   end	  
 	

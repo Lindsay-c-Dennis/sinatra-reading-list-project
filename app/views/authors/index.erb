@@ -1,0 +1,7 @@
+<h1>Author Index</h1>
+
+<ul>
+	<% Author.all.each do |author| %>
+	  <li><a href="/authors/<%=author.id%>"><%=author.name%></a></li>
+	<% end %>  
+</ul>

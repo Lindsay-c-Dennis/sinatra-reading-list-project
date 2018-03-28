@@ -4,7 +4,7 @@ class BooksController < ApplicationController
     if logged_in?
       erb :'/books/index'
     else
-      redirect to '/login'
+      redirect to '/'
     end
   end       
   
@@ -18,7 +18,7 @@ class BooksController < ApplicationController
       end
       erb :'/books/add_from_library'
     else 
-      redirect to '/login'	
+      redirect to '/'	
     end  
   end   	
 
@@ -28,7 +28,7 @@ class BooksController < ApplicationController
   	  @books = Book.all
   	  erb :'/books/new'
   	else 
-  	  redirect to '/login' 
+  	  redirect to '/' 
   	end   
   end
 
@@ -37,7 +37,7 @@ class BooksController < ApplicationController
       @book = Book.find_by_id(params[:id]) 
   	  erb :'/books/show'
   	else 
-  	  redirect to '/login'
+  	  redirect to '/'
   	end    
   end 
 
@@ -46,7 +46,7 @@ class BooksController < ApplicationController
   		@book = Book.find_by_id(params[:id])
   		erb :'/books/edit'
   	else
-  	    redirect to '/login'
+  	    redirect to '/'
   	end
   end 
   
@@ -60,7 +60,7 @@ class BooksController < ApplicationController
       current_user.books << @book
       redirect to "/users/:id"   
   	else
-  	  redirect to '/login'
+  	  redirect to '/'
   	end     
   end 
   
@@ -70,20 +70,26 @@ class BooksController < ApplicationController
       current_user.books << @book 
       redirect to '/users/:id'
     else 
-      redirect to '/login'
+      redirect to '/'
     end 
   end       
 
   patch '/books/:id' do 
-  	@book = Book.find_by_id(params[:id])
-  	@book.update(params[:book])
-  	redirect to '/users/:id'
+  	if logged_in?
+      @book = Book.find_by_id(params[:id])
+    	@book.update(params[:book])
+    	redirect to '/users/:id'
+    else 
+      redirect to '/'  
   end	
 
   delete '/books/:id/delete' do 
-    @book = Book.find_by_id(params[:id])
-    current_user.books.delete(@book)
-    redirect to '/users/:id'
+    if logged_in?
+      @book = Book.find_by_id(params[:id])
+      current_user.books.delete(@book)
+      redirect to '/users/:id'
+    else 
+      redirect to '/'  
   end
 	    	
 end
