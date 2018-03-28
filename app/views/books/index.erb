@@ -1,0 +1,7 @@
+<h1>Book Index</h1>
+
+<ul>
+	<% Book.all.each do |book| %>
+	  <li><a href="/books/<%=book.id%>"><%=book.title%> by <%=book.author.name%></a></li>
+	<% end %>  
+</ul>
