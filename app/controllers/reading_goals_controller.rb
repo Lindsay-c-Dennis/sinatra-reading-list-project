@@ -8,6 +8,15 @@ class ReadingGoalsController < ApplicationController
     end
   end 
 
+  get '/reading_goals/:id' do
+    if logged_in?
+    	@goal = ReadingGoal.find_by_id(params[:id])
+  		erb :'/reading_goals/show'
+  	else 
+  		redirect to '/'
+  	end
+  end			
+
   get '/reading_goals/:id/edit' do 
     @goal = ReadingGoal.find_by_id(params[:id])
     if logged_in? && current_user.id == @goal.user_id
