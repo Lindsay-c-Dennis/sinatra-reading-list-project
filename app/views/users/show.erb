@@ -21,6 +21,7 @@
 <ul>
 	<% current_user.reading_goals.each do |reading_goal| %>
 		<li><%=reading_goal.content%></li>
+		<a href="/reading_goals/<%=reading_goal.id%>/edit"><button>Edit Goal</button></a>
 	<% end %>	
 </ul>
 <br></br>
