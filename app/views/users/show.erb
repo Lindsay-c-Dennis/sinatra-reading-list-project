@@ -2,13 +2,13 @@
 <h2>Here is your reading list:</h2>
 <ol>
 	<% current_user.books.each do |book| %>
-	  <li><a href="/books/<%=book.id%>"> <%=book.title%> by <%=book.author.name%></a> 
+	  <li><a href="/books/<%=book.id%>"> <%=book.title%> by <%=book.author.name%></a></li> 
 	  <br>
 	  <a href="/books/<%=book.id%>/edit"><button>Edit Book</button></a> 
 	  <form action="/books/<%= book.id %>/delete" method="POST">
-	  <input id="hidden" type="hidden" name="_method" value="DELETE">
-	  <input  type="submit" value="Delete Book"></li>
-</form>
+	    <input id="hidden" type="hidden" name="_method" value="DELETE">
+	    <input  type="submit" value="Delete Book">
+      </form>
 	<% end %>
 </ol>
 <br></br>
@@ -22,10 +22,15 @@
 	<% current_user.reading_goals.each do |reading_goal| %>
 		<li><%=reading_goal.content%></li>
 		<a href="/reading_goals/<%=reading_goal.id%>/edit"><button>Edit Goal</button></a>
+		<form action="/reading_goals/<%= reading_goal.id %>/delete" method="POST">
+	  		<input id="hidden" type="hidden" name="_method" value="DELETE">
+	  		<input  type="submit" value="Delete Goal">
+		</form>	  
 	<% end %>	
 </ul>
 <br></br>
 <a class="button" href="/reading_goals/new">Click here to add a new reading goal</a>
+
 
 
 

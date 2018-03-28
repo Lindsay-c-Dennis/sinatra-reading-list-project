@@ -32,7 +32,11 @@ class ReadingGoalsController < ApplicationController
     redirect to '/users/:id'
   end  
 
-       
+  delete '/reading_goals/:id/delete' do 
+  	@goal = ReadingGoal.find_by_id(params[:id])
+  	@goal.delete
+  	redirect to "/users/:id"
+  end      
 
   post '/reading_goals' do
      @goal = ReadingGoal.create(content: params[:content])
