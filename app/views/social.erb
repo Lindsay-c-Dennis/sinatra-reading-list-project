@@ -1,10 +1,17 @@
-<h1>Here's what folks are reading!</h1>
+<h1>Community Reading Lists and Reading Goals</h1>
 <br></br>
 <% User.all.each do |user| %>
-  <h3><%=user.username%>'s Reading List:</h3>
+  <h2><%=user.username%>'s Reading List:</h2>
   <ol>
   <% user.books.each do |book| %>
     <li><a href="/books/<%=book.id%>"><%=book.title%> by <%=book.author.name%></a></li> 
   <% end %>  
   </ol>
+  <h3><%=user.username%>'s Reading Goals:</h3>
+  <ul>
+  	<% user.reading_goals.each do |reading_goal| %>
+  	  <li><%=reading_goal.content%></li>
+  	<% end %>
+  </ul>	  
 <% end %>
+
