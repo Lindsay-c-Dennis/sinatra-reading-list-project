@@ -15,6 +15,9 @@
 
 	<a class="button" href="/books/add">Click here to add a book to your reading list</a>
 	<br></br>
+
+<h2>Here Are Your Reading Goals: </h2>
+
 <ul>
 	<% current_user.reading_goals.each do |reading_goal| %>
 		<li><%=reading_goal.content%></li>
