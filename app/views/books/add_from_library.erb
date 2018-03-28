@@ -1,7 +1,7 @@
 <h3>Add an Existing Book From the Library to Your Reading List</h1>
 
 <form action="/books/add" method="POST">
-	<% Book.all.each do |book| %>
+	<% @new_books.each do |book| %>
 	  <input id="<%=book.id%>" type="radio" name="book[id]" value="<%=book.id%>">
 	  <label for="<%=book.id%>"><%=book.title%> by <%=book.author.name%></label>
 	  <br>

@@ -48,6 +48,12 @@ class ApplicationController < Sinatra::Base
 
   get '/books/add' do 
     if logged_in?
+      @new_books = []
+      Book.all.each do |book|
+        if !current_user.books.include?(book)
+        	@new_books << book 
+        end	
+      end
       erb :'/books/add_from_library'
     else 
       redirect to '/login'	
