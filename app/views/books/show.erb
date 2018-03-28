@@ -1,6 +1,6 @@
 <h1><%=@book.title%> by <a href="/authors/<%=@book.author_id%>"><%=@book.author.name%></a> </h1>
 
-<h3>This book is being read by: </h3>
+<h2>Users who are reading this book: </h2>
 <ul>
 	<% @book.users.each do |user| %>
 	<li><%=user.username%></li>
@@ -10,12 +10,6 @@
 	<% if !current_user.books.include?(@book) %>
 	<form action="/books/add" method="POST">
 	<input id="<%=@book.id%>" type="hidden" name="book[id]" value="<%=@book.id%>">
-	<input type="submit" value="Add This Book to Your Reading List">	
+	<input class="button" type="submit" value="Add This Book to Your Reading List">	
 	</form>
 <% end %>	
-<br></br>
-<a href="/users/:id">Click Here to Return to Your Homepage</a>
-<br></br>
-<a href="/reading_list">Click Here to See What Others Are Reading</a>
-<br></br>
-<a href="/logout"><button>Log Out</button></a>

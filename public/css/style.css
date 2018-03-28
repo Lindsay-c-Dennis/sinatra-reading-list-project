@@ -1,3 +1,6 @@
+* {
+	background-color: #ccc;
+}
 .topnav a {
     float: left;
     color: #0f406b;
@@ -17,18 +20,52 @@
 
 .container {
     clear: both;
-    background-color: #f2f2f2;
+    
 
 }
 
-.container h1 {
+h1 {
 	text-align: center;
 }
 
-
-
-
-header {
+.banner {
 	text-align: center;
-	background-image: url("https://archive.org/download/books_1112/books.jpg");
+	background-color: green;
 }
+
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+li, label {
+	font-size: 1.5em;
+	font-weight: strong;
+}
+
+.float_button {
+	float: left;
+	margin: 20px;
+	width: 45%;
+}
+
+input {
+	background-color: white;
+}
+
+button {
+	background-color: white;
+}
+
+input.big {
+	font-size: 1.5em;
+	z-index: 1;
+	background-color: white;
+}
+

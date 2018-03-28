@@ -1,14 +1,10 @@
-Here's what folks are reading!
+<h1>Here's what folks are reading!</h1>
 <br></br>
 <% User.all.each do |user| %>
-  <h4><%=user.username%>'s Reading List:</h4>
+  <h3><%=user.username%>'s Reading List:</h3>
   <ol>
   <% user.books.each do |book| %>
     <li><a href="/books/<%=book.id%>"><%=book.title%> by <%=book.author.name%></a></li> 
   <% end %>  
   </ol>
 <% end %>
-<br></br>
-<a href="/users/:id">Return to Your Homepage</a> 
-<br></br>
-<a href="/logout"><button>Log Out</button></a>

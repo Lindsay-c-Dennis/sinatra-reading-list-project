@@ -1,4 +1,4 @@
-<h3>Add an Existing Book From the Library to Your Reading List</h1>
+<h2>Add an Existing Book From the Library to Your Reading List</h2>
 
 <form action="/books/add" method="POST">
 	<% @new_books.each do |book| %>
@@ -7,13 +7,10 @@
 	  <br>
 	<% end %>
 	<br>
-	<input type="submit" name="Add Book">  
+	<input type="submit" value="Add Book">  
+</form>
+<br></br>
+<form action="/books/new" method="get">
+<input type="submit" value="Click Here To Create A New Book" class="button">
 </form>
 
-<h3>Or, <a href="/books/new">click here</a> to add a new book</h3>
-
-<a href="/users/:id">Click here to return to your homepage</a>
-<br></br>
-<a href="/reading_list">Click here to see what others are reading</a>
-<br></br>
-<a href="/logout"><button>Logout</button></a>

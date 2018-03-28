@@ -1,11 +1,15 @@
-<h1>Sign in to your account:</h1>
-<form action="/login" method="POST">
-	<label for="username">Username: </label>
-	<input id="username" type="text" name="username"><br>
-	<label for="password">Password:  </label>
-	<input id="password" type="password" name="password">
-	<br></br>
-	<input type="submit" value="Login">
-</form>
 
-<h3>Or, <a href="/signup">click here</a> to create an account.</h3>
+	<h1>Sign in to your account:</h1>
+	<form action="/login" method="POST">
+		<label for="username">Username: </label>
+		<input id="username" type="text" name="username"><br>
+		<label for="password">Password:  </label>
+		<input id="password" type="password" name="password">
+		<br></br>
+		<input type="submit" value="Login">
+	</form>
+<br></br>
+
+<form action="/signup" method="get">
+	<input class="button" type="submit" value="Click Here to Create An Account">
+</form>

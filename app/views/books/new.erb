@@ -1,14 +1,14 @@
-<h2>Add a New Book to Your Library</h2>
+<h1>Add a New Book to Your Library</h1>
 
 <form action="/books" method="POST">
 	<label for="title">Book Title: </label>
 	<input id="title" type="text" name="book[title]">
 	<br></br>
-    <label>Choose an existing author:</label>
+    <h3>Choose an existing author:</h3>
     <br>
     <% @authors.each do |author| %>
     <input type="radio" name="book[author_id]" value="<%=author.id%>" id="<%=author.id%>">
-    <label><%=author.name%>    </label>
+    <label><%=author.name%> </label>
     <% end %>
     <br></br>
     <h3>Or, add a new author:</h3>
