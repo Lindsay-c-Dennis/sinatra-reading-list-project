@@ -24,7 +24,8 @@ class UsersController < ApplicationController
 	get '/users/:id' do 
   	  if logged_in? 
   	    erb :'/users/show'
-  	  else 
+  	  else
+        flash[:message] = "You must be signed in to view that page" 
   	    redirect to '/login'
   	  end
   	end

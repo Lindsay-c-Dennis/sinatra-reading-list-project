@@ -4,6 +4,7 @@ class BooksController < ApplicationController
     if logged_in?
       erb :'/books/index'
     else
+      flash[:message] = "You must be signed in to view that page"
       redirect to '/'
     end
   end       
@@ -17,7 +18,8 @@ class BooksController < ApplicationController
         end	
       end
       erb :'/books/add_from_library'
-    else 
+    else
+      flash[:message] = "You must be signed in to view that page"
       redirect to '/'	
     end  
   end   	
@@ -27,7 +29,8 @@ class BooksController < ApplicationController
       @authors = Author.all
   	  @books = Book.all
   	  erb :'/books/new'
-  	else 
+  	else
+      flash[:message] = "You must be signed in to view that page"
   	  redirect to '/' 
   	end   
   end
@@ -36,16 +39,18 @@ class BooksController < ApplicationController
     if logged_in?
       @book = Book.find_by_id(params[:id]) 
   	  erb :'/books/show'
-  	else 
+  	else
+      flash[:message] = "You must be signed in to view that page"
   	  redirect to '/'
   	end    
   end 
 
   get '/books/:id/edit' do 
-  	if logged_in?
-  		@book = Book.find_by_id(params[:id])
+  	@book = Book.find_by_id(params[:id])
+    if logged_in? && current_user.books.include?(@book)
   		erb :'/books/edit'
   	else
+        flash[:message] = "You must be signed in to view that page"
   	    redirect to '/'
   	end
   end 
@@ -64,6 +69,7 @@ class BooksController < ApplicationController
       current_user.books << @book
       redirect to "/users/:id"   
   	else
+      flash[:message] = "You must be signed in to view that page"
   	  redirect to '/'
   	end     
   end 

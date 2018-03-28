@@ -1,4 +1,5 @@
 require './config/environment'
+require 'rack-flash'
 
 class ApplicationController < Sinatra::Base
 
@@ -7,6 +8,7 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     enable :sessions
     set :session_secret, "moby_dick"
+    use Rack::Flash
   end
 
   get '/' do 
@@ -21,6 +23,7 @@ class ApplicationController < Sinatra::Base
     if logged_in?
       erb :social
     else 
+      flash[:message] = "You must be signed in to view that page"
       redirect to '/'
     end    
   end  
@@ -28,7 +31,8 @@ class ApplicationController < Sinatra::Base
   get '/authors' do 
     if logged_in?
     	erb :'/authors/index'
-    else 
+    else
+        flash[:message] = "You must be signed in to view that page" 
         redirect to '/'
     end    	
   end 
@@ -38,6 +42,7 @@ class ApplicationController < Sinatra::Base
   	if logged_in?
   		erb :'/authors/show'
   	else 
+        flash[:message] = "You must be signed in to view that page"
   	    redirect to '/'
   	end 
   end	  

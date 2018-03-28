@@ -1,5 +1,7 @@
 <h1>Welcome to the Reading List!</h1>
-
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
 <form action="/login" method="get">
 <input class="button float_button" type="submit" value="Click Here to Login">
 </form>

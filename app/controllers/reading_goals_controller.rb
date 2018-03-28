@@ -4,6 +4,7 @@ class ReadingGoalsController < ApplicationController
     if logged_in?
     	erb :'/reading_goals/new'
     else
+      flash[:message] = "You must be signed in to view that page"
     	redirect to '/'
     end
   end 
@@ -12,7 +13,8 @@ class ReadingGoalsController < ApplicationController
     if logged_in?
     	@goal = ReadingGoal.find_by_id(params[:id])
   		erb :'/reading_goals/show'
-  	else 
+  	else
+      flash[:message] = "You must be signed in to view that page"
   		redirect to '/'
   	end
   end			
@@ -22,6 +24,7 @@ class ReadingGoalsController < ApplicationController
     if logged_in? && current_user.id == @goal.user_id
       erb :'/reading_goals/edit'
     else
+      flash[:message] = "You must be signed in to view that page"
       redirect to '/'
     end
   end 
