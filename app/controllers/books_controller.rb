@@ -88,6 +88,10 @@ class BooksController < ApplicationController
   	if logged_in?
       @book = Book.find_by_id(params[:id])
     	@book.update(params[:book])
+      if !params["author"]["name"].empty?
+        @book.author = Author.create(name: params["author"]["name"])
+      @book.save  
+      end  
     	redirect to '/users/:id'
     else 
       redirect to '/'

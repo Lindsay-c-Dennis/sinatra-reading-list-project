@@ -39,7 +39,7 @@ class ApplicationController < Sinatra::Base
 
   get '/authors/:id' do 
   	@author = Author.find_by_id(params[:id])
-  	if logged_in?
+    if logged_in?
   		erb :'/authors/show'
   	else 
         flash[:message] = "You must be signed in to view that page"

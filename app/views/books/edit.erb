@@ -10,7 +10,7 @@
   <br></br>
 
   <%Author.all.each do |author|%>
-    <input type="radio" name="book[author_id]" value="<%=author.id%>" id="<%=author.id%>" <%='checked' if @book.author.name == author.name %>>
+    <input type="radio" name="book[author_id]" value="<%=author.id%>" id="<%=author.id%>">
     <label><%=author.name%></label>
   <%end%>
   <br></br>
