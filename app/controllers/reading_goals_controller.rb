@@ -42,9 +42,12 @@ class ReadingGoalsController < ApplicationController
   end      
 
   post '/reading_goals' do
-     @goal = ReadingGoal.create(content: params[:content])
-     current_user.reading_goals << @goal
-     redirect to '/users/:id' 
+     if params[:content] != ""
+       @goal = ReadingGoal.create(content: params[:content])
+       current_user.reading_goals << @goal
+       redirect to '/users/:id'
+      else
+        redirect to '/reading_goals/new' 
   end 		
 
 
