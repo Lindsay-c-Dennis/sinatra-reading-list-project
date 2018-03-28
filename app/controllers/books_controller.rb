@@ -44,11 +44,9 @@ class BooksController < ApplicationController
   
   post '/books' do 
   	if logged_in?
-      @book = Book.find_or_create_by(title: params["book"]["title"])
+      @book = Book.create(params[:book])
       if !params["author"]["name"].empty?
         @book.author = Author.find_or_create_by(name: params["author"]["name"])
-      else 
-        @book.author_id = params["book"]["author_id"]  
       end 
       @book.save
       current_user.books << @book
